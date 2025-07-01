@@ -1,6 +1,5 @@
 #[cfg(test)]
 mod integration_tests {
-
     use candy_ass_backtest::config::{AppConfig, ClickhouseConfig};
     use candy_ass_backtest::integrations::clickhouse::candlesticks_repository::{CandlesticksReadService, CandlesticksRepository, CandlesticksWriteService};
     use candy_ass_backtest::integrations::clickhouse_client;
@@ -10,7 +9,6 @@ mod integration_tests {
     use testcontainers::{ContainerAsync, GenericImage};
     use time::format_description::well_known::Rfc3339;
     use time::{Duration, OffsetDateTime};
-    use tokio;
 
     pub async fn setup_repository(config: ClickhouseConfig) -> (ContainerAsync<GenericImage>, CandlesticksRepository) {
         let container = setup_clickhouse_container(&config).await;

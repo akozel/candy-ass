@@ -121,12 +121,7 @@ impl Application {
         candlesticks_repository.bulk_insert_candlesticks(chunk).await
     }
 
-    fn download_candlesticks_command(
-        timeframe: Timeframe,
-        start_date: OffsetDateTime,
-        symbols: Arc<Symbols>,
-        filter: SymbolFilterFn,
-    ) -> DownloadCandlesticks {
+    fn download_candlesticks_command(timeframe: Timeframe, start_date: OffsetDateTime, symbols: Arc<Symbols>, filter: SymbolFilterFn) -> DownloadCandlesticks {
         DownloadCandlesticks {
             symbols,
             timeframe: timeframe.clone(),

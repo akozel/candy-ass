@@ -39,9 +39,9 @@ mod tests {
 
     #[test]
     fn test_parse_f64_from_number() {
-        let value = json!(3.14);
+        let value = json!(13.14);
         let result = parse_f64(&value, "valid_number");
-        assert_eq!(result.unwrap(), 3.14);
+        assert_eq!(result.unwrap(), 13.14);
     }
 
     #[test]
@@ -57,8 +57,6 @@ mod tests {
         let result = parse_f64(&value, "invalid_type");
         assert!(matches!(result, Err(HttpResponseError::Unexpected(msg)) if msg.contains("Unexpected type")));
     }
-
-    ///
 
     #[test]
     fn test_parse_u64_from_string() {
@@ -83,7 +81,7 @@ mod tests {
 
     #[test]
     fn test_parse_u64_invalid_number() {
-        let value = json!(3.14);
+        let value = json!(1.123);
         let result = parse_u64(&value, "invalid_number");
         assert!(matches!(result, Err(HttpResponseError::Unexpected(msg)) if msg.contains("invalid_number")));
     }
