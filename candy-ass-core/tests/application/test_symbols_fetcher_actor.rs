@@ -31,7 +31,7 @@ mod tests {
         // Then
         let state = receiver.borrow().clone().unwrap();
 
-        let _ = symbols_fetcher_actor.send(Shutdown).await.unwrap();
+        symbols_fetcher_actor.send(Shutdown).await.unwrap();
         assert_eq!(2, state.len());
     }
 
@@ -45,10 +45,10 @@ mod tests {
         let receiver = symbols_fetcher_actor.send(GetReceiver).await.unwrap();
 
         // Then
-        let result = WatchStream::new(receiver).filter_map(|option| ready(option)).next().await;
+        let result = WatchStream::new(receiver).filter_map(ready).next().await;
         let state = result.unwrap();
 
-        let _ = symbols_fetcher_actor.send(Shutdown).await.unwrap();
+        symbols_fetcher_actor.send(Shutdown).await.unwrap();
         assert_eq!(2, state.len());
     }
 
@@ -62,12 +62,12 @@ mod tests {
         let receiver = symbols_fetcher_actor.send(GetReceiver).await.unwrap();
 
         // Then
-        let result: Vec<Arc<Symbols>> = WatchStream::new(receiver).filter_map(|option| ready(option)).take(2).collect().await;
+        let result: Vec<Arc<Symbols>> = WatchStream::new(receiver).filter_map(ready).take(2).collect().await;
 
-        let result0 = result.get(0).expect("result[0] missing").as_ref();
+        let result0 = result.first().expect("result[0] missing").as_ref();
         let result1 = result.get(1).expect("result[1] missing").as_ref();
 
-        let _ = symbols_fetcher_actor.send(Shutdown).await.unwrap();
+        symbols_fetcher_actor.send(Shutdown).await.unwrap();
         assert_eq!(2, result0.len());
         assert_eq!(2, result1.len());
     }
