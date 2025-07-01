@@ -3,7 +3,7 @@ use crate::domain::exchange_type::ExchangeType;
 use crate::domain::exchange_type::ExchangeType::Binance;
 use crate::domain::symbol::Symbol;
 use crate::domain::timeframe::Timeframe::OneDay;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::sync::{Arc, LazyLock};
 use time::format_description::well_known::Rfc3339;
 use time::{Duration, OffsetDateTime};
@@ -25,13 +25,22 @@ pub static BTC_USDT_CANDLESTICK: LazyLock<Candlestick> = LazyLock::new(|| {
     }
 });
 
+fn fixture_path(filename: &str) -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("src")        // <-- нет «\» – только join
+        .join("mocks")
+        .join("fixtures")
+        .join(filename)
+}
+
 async fn fixture_string(filename: &str) -> String {
-    let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("src\\mocks\\fixtures").join(filename);
-    fs::read_to_string(path).await.expect("can't read fixture")
+    tokio::fs::read_to_string(fixture_path(filename))
+        .await
+        .expect("can't read fixture")
 }
 
 pub async fn mock_candlesticks(symbol: Arc<Symbol>) -> Option<Vec<Candlestick>> {
-    let path = format!("candlesticks\\{}_{}_{}.json", symbol.exchange_type, symbol.base_asset, symbol.quote_asset).to_lowercase();
+    let path = format!("candlesticks/{}_{}_{}.json", symbol.exchange_type, symbol.base_asset, symbol.quote_asset).to_lowercase();
     serde_json::from_str(fixture_string(path.as_ref()).await.as_ref()).ok()
 }
 
