@@ -1,4 +1,3 @@
-
 use candy_ass_backtest::application::{history_downloader, history_reproducer};
 use candy_ass_backtest::config::AppConfig;
 use candy_ass_backtest::mocks::mock_docker_clickhouse::setup_clickhouse_container;
