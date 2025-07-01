@@ -1,7 +1,5 @@
 ## Motivation:
 
----
-
 This application was developed as part of a research project to evaluate 
 the `expressiveness` and `performance` of the `Rust` programming language.
 The selected domain is data preparation for `backtesting` trading strategies,
@@ -14,11 +12,9 @@ The backtest crate, in particular, is divided into two applications:
 - `History Downloader` - fetch historical data into local storage
 - `History Reproducer` - replay historical data from local storage
 
-Both applications are optimized to achieve blazing fast performance.
+Both applications are optimized to achieve __blazing fast__ performance.
 
 ## History Downloader
-
----
 
 *History Downloader* application connects to the exchange (Binance) and performs requests 
 using **multiple threads**. It respects exchange rate limits and **ensures backpressure**
@@ -31,8 +27,6 @@ then sliced into batches and inserted into the database in groups (bulk insert).
 
 
 ## History Reproducer
-
----
 
 This application loads data from the database in slices and pushes it into the stream buffer. 
 By default, it performs prefetching for 4 slices. As a CPU-level optimization,
