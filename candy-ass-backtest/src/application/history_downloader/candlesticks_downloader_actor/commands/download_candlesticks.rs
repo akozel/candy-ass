@@ -78,7 +78,7 @@ impl Handler<DownloadCandlesticks> for CandlesticksDownloaderActor {
                                             candlestick_sender
                                                 .send(candlesticks)
                                                 .await
-                                                .inspect_err(|err| panic!("Candlesticks channel is closed: {:?}", err))
+                                                .inspect_err(|err| panic!("Candlesticks channel is closed: {err}"))
                                                 .map(|_| report)
                                                 .unwrap()
                                         }

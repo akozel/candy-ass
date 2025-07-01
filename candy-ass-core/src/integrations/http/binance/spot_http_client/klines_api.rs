@@ -133,9 +133,6 @@ mod tests {
         // Then
         let (result, headers) = result.unwrap();
 
-        let json = serde_json::to_string_pretty(&result).unwrap();
-        print!("{}", json);
-
         assert_eq!(result.len(), 3);
         assert!(result[0].open_time < result[2].open_time);
 
