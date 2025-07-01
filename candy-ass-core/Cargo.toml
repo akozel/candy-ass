@@ -1,0 +1,48 @@
+[package]
+name = "candy-ass-core"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+test-utils = ["mockall","testcontainers"]
+
+[dependencies]
+# async-runtime
+futures.workspace = true
+futures-util.workspace = true
+tokio.workspace = true
+tokio-stream.workspace = true
+
+# actors
+actix.workspace = true
+
+# sync-runtime
+dashmap.workspace = true
+
+# config / error handling
+dotenvy.workspace = true
+config.workspace = true
+thiserror.workspace = true
+
+# serialization / mapping
+serde.workspace = true
+serde_json.workspace = true
+strum.workspace = true
+strum_macros.workspace = true
+
+# data structures
+time.workspace = true
+
+# http
+reqwest.workspace = true
+axum.workspace = true
+
+# monitorting
+tracing.workspace = true
+
+# shared testing dependencies
+mockall = { version = "0.13", optional = true }
+testcontainers = {version = "0.24", optional = true }
+
+[dev-dependencies]
+candy-ass-core = { path = ".", features = ["test-utils"] }

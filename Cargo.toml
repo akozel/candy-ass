@@ -1,0 +1,48 @@
+[workspace]
+resolver = "3"
+members = [
+    "candy-ass-core",
+    "candy-ass-backtest"
+]
+
+[workspace.dependencies]
+# async-runtime
+futures = "0.3"
+futures-util = "0.3"
+
+tokio = { version = "1.4", features = ["full"] }
+tokio-stream = { version = "0.1", features = ["full"] }
+tokio-retry = "0.3"
+
+# actors
+actix = "0.13"
+
+# sync-runtime
+rayon = "1.10"
+tokio-rayon = "2.1"
+
+# config / error handling
+dotenvy = "0.15"
+config = "0.15"
+thiserror = "2.0"
+
+# serialization / mapping
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0.140"
+strum = "0.27"
+strum_macros = "0.27"
+
+# data structures
+dashmap = "6.1"
+time = { version = "0.3", features = ["serde", "formatting", "parsing", "macros"] }
+
+# http
+reqwest = { version = "0.12", features = ["json", "stream", "gzip"] }
+axum = "0.8"
+
+# database
+clickhouse = { version = "0.13", features = ["time"] }
+
+# monitorting
+tracing = "0.1"
+tracing-subscriber = "0.3"

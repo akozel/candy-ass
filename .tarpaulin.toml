@@ -1,0 +1,13 @@
+[run]
+workspace = true
+exclude-tests = true
+exclude-files = [
+    "**/bin/*.rs",
+    "**/mocks/*.rs",
+    "**/mocks/**/*.rs",
+    "**/tests/*.rs",
+    "**/tests/**/*.rs"
+]
+
+line-coverage = true
+fail-under = 85

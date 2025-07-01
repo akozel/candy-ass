@@ -1,0 +1,452 @@
+[
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:12:00Z",
+    "close_time": "2025-06-29T17:14:59.999Z",
+    "open_price": 2436.86,
+    "close_price": 2438.44,
+    "low_price": 2436.86,
+    "high_price": 2438.44,
+    "volume": 153.6522
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:15:00Z",
+    "close_time": "2025-06-29T17:17:59.999Z",
+    "open_price": 2438.43,
+    "close_price": 2437.04,
+    "low_price": 2436.07,
+    "high_price": 2438.81,
+    "volume": 200.307
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:18:00Z",
+    "close_time": "2025-06-29T17:20:59.999Z",
+    "open_price": 2437.03,
+    "close_price": 2437.78,
+    "low_price": 2437.03,
+    "high_price": 2437.79,
+    "volume": 98.3263
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:21:00Z",
+    "close_time": "2025-06-29T17:23:59.999Z",
+    "open_price": 2437.78,
+    "close_price": 2436.59,
+    "low_price": 2435.97,
+    "high_price": 2437.97,
+    "volume": 115.2035
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:24:00Z",
+    "close_time": "2025-06-29T17:26:59.999Z",
+    "open_price": 2436.6,
+    "close_price": 2436.4,
+    "low_price": 2435.94,
+    "high_price": 2436.84,
+    "volume": 88.7666
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:27:00Z",
+    "close_time": "2025-06-29T17:29:59.999Z",
+    "open_price": 2436.41,
+    "close_price": 2436.5,
+    "low_price": 2435.99,
+    "high_price": 2436.66,
+    "volume": 87.5869
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:30:00Z",
+    "close_time": "2025-06-29T17:32:59.999Z",
+    "open_price": 2436.5,
+    "close_price": 2436.47,
+    "low_price": 2435.89,
+    "high_price": 2436.51,
+    "volume": 121.0987
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:33:00Z",
+    "close_time": "2025-06-29T17:35:59.999Z",
+    "open_price": 2436.47,
+    "close_price": 2435.8,
+    "low_price": 2435.8,
+    "high_price": 2438.13,
+    "volume": 190.247
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:36:00Z",
+    "close_time": "2025-06-29T17:38:59.999Z",
+    "open_price": 2435.8,
+    "close_price": 2434.65,
+    "low_price": 2434.64,
+    "high_price": 2436.11,
+    "volume": 125.848
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:39:00Z",
+    "close_time": "2025-06-29T17:41:59.999Z",
+    "open_price": 2434.65,
+    "close_price": 2433.09,
+    "low_price": 2432.63,
+    "high_price": 2434.65,
+    "volume": 290.3077
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:42:00Z",
+    "close_time": "2025-06-29T17:44:59.999Z",
+    "open_price": 2433.09,
+    "close_price": 2434.54,
+    "low_price": 2433.09,
+    "high_price": 2434.93,
+    "volume": 152.7098
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:45:00Z",
+    "close_time": "2025-06-29T17:47:59.999Z",
+    "open_price": 2434.53,
+    "close_price": 2435.52,
+    "low_price": 2434.22,
+    "high_price": 2435.52,
+    "volume": 220.1937
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:48:00Z",
+    "close_time": "2025-06-29T17:50:59.999Z",
+    "open_price": 2435.52,
+    "close_price": 2435.2,
+    "low_price": 2435.2,
+    "high_price": 2436.2,
+    "volume": 142.9589
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:51:00Z",
+    "close_time": "2025-06-29T17:53:59.999Z",
+    "open_price": 2435.2,
+    "close_price": 2437.34,
+    "low_price": 2435.2,
+    "high_price": 2437.52,
+    "volume": 113.5036
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:54:00Z",
+    "close_time": "2025-06-29T17:56:59.999Z",
+    "open_price": 2437.33,
+    "close_price": 2439.58,
+    "low_price": 2437.0,
+    "high_price": 2439.59,
+    "volume": 193.0262
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T17:57:00Z",
+    "close_time": "2025-06-29T17:59:59.999Z",
+    "open_price": 2439.58,
+    "close_price": 2439.14,
+    "low_price": 2439.0,
+    "high_price": 2439.59,
+    "volume": 185.409
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:00:00Z",
+    "close_time": "2025-06-29T18:02:59.999Z",
+    "open_price": 2439.14,
+    "close_price": 2437.94,
+    "low_price": 2437.27,
+    "high_price": 2439.29,
+    "volume": 161.1153
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:03:00Z",
+    "close_time": "2025-06-29T18:05:59.999Z",
+    "open_price": 2437.94,
+    "close_price": 2436.27,
+    "low_price": 2436.26,
+    "high_price": 2438.04,
+    "volume": 55.8185
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:06:00Z",
+    "close_time": "2025-06-29T18:08:59.999Z",
+    "open_price": 2436.27,
+    "close_price": 2435.97,
+    "low_price": 2435.68,
+    "high_price": 2436.57,
+    "volume": 92.2985
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:09:00Z",
+    "close_time": "2025-06-29T18:11:59.999Z",
+    "open_price": 2435.97,
+    "close_price": 2434.63,
+    "low_price": 2434.63,
+    "high_price": 2436.2,
+    "volume": 164.4054
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:12:00Z",
+    "close_time": "2025-06-29T18:14:59.999Z",
+    "open_price": 2434.64,
+    "close_price": 2434.39,
+    "low_price": 2434.16,
+    "high_price": 2434.66,
+    "volume": 85.6231
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:15:00Z",
+    "close_time": "2025-06-29T18:17:59.999Z",
+    "open_price": 2434.4,
+    "close_price": 2436.17,
+    "low_price": 2434.17,
+    "high_price": 2436.2,
+    "volume": 107.0546
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:18:00Z",
+    "close_time": "2025-06-29T18:20:59.999Z",
+    "open_price": 2436.18,
+    "close_price": 2436.6,
+    "low_price": 2436.17,
+    "high_price": 2437.32,
+    "volume": 218.6664
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:21:00Z",
+    "close_time": "2025-06-29T18:23:59.999Z",
+    "open_price": 2436.6,
+    "close_price": 2437.31,
+    "low_price": 2436.1,
+    "high_price": 2437.31,
+    "volume": 68.2421
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:24:00Z",
+    "close_time": "2025-06-29T18:26:59.999Z",
+    "open_price": 2437.31,
+    "close_price": 2439.24,
+    "low_price": 2437.31,
+    "high_price": 2439.53,
+    "volume": 341.6977
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:27:00Z",
+    "close_time": "2025-06-29T18:29:59.999Z",
+    "open_price": 2439.23,
+    "close_price": 2441.41,
+    "low_price": 2438.91,
+    "high_price": 2442.45,
+    "volume": 372.6101
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:30:00Z",
+    "close_time": "2025-06-29T18:32:59.999Z",
+    "open_price": 2441.42,
+    "close_price": 2441.59,
+    "low_price": 2440.03,
+    "high_price": 2442.23,
+    "volume": 532.561
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:33:00Z",
+    "close_time": "2025-06-29T18:35:59.999Z",
+    "open_price": 2441.59,
+    "close_price": 2441.74,
+    "low_price": 2441.58,
+    "high_price": 2442.55,
+    "volume": 356.7406
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:36:00Z",
+    "close_time": "2025-06-29T18:38:59.999Z",
+    "open_price": 2441.74,
+    "close_price": 2439.55,
+    "low_price": 2439.07,
+    "high_price": 2441.74,
+    "volume": 186.4004
+  },
+  {
+    "symbol": {
+      "exchange_type": "Binance",
+      "base_asset": "ETH",
+      "quote_asset": "USDT"
+    },
+    "timeframe": "3m",
+    "open_time": "2025-06-29T18:39:00Z",
+    "close_time": "2025-06-29T18:41:59.999Z",
+    "open_price": 2439.56,
+    "close_price": 2439.05,
+    "low_price": 2438.65,
+    "high_price": 2439.56,
+    "volume": 123.9267
+  }
+]

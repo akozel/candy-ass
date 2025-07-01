@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:24
+    container_name: clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_USER: candy-ass
+      CLICKHOUSE_PASSWORD: "123"
