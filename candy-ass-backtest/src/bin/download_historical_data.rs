@@ -3,7 +3,7 @@ use candy_ass_core::domain::timeframe::Timeframe::ThreeMinutes;
 use std::io;
 
 use candy_ass_backtest::config::AppConfig;
-use candy_ass_core::domain::symbol::Symbol;
+use candy_ass_core::domain::symbol::SymbolFilterFn;
 use std::sync::Arc;
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
@@ -18,7 +18,7 @@ async fn main() {
     let application = Application::new(50, 14, config);
 
     let start_date = OffsetDateTime::parse("2023-01-01T00:00:00Z", &Rfc3339).unwrap();
-    let filter: Arc<dyn Fn(&Arc<Symbol>) -> bool + Send + Sync> = Arc::new(|symbol| symbol.quote_asset == "USDT");
+    let filter: SymbolFilterFn = Arc::new(|symbol| symbol.quote_asset == "USDT");
     application.start_pipeline(ThreeMinutes, start_date, filter).await;
 
     info!("Import completed. Would you like to run clickhouse optimization ? [y/n]");

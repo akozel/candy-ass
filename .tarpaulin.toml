@@ -3,6 +3,7 @@ workspace = true
 exclude-tests = true
 exclude-files = [
     "**/bin/*.rs",
+    "**/src/config.rs",
     "**/mocks/*.rs",
     "**/mocks/**/*.rs",
     "**/tests/*.rs",

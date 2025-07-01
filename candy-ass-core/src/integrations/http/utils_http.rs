@@ -32,7 +32,6 @@ where
                     }
                 }
             })
-            .map(|result| result.map_err(Into::into))
             .boxed()
     }
 }

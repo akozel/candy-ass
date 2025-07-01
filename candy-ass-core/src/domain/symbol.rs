@@ -7,6 +7,7 @@ use std::hash::{Hash, Hasher};
 use std::sync::Arc;
 
 pub type Symbols = Vec<Arc<Symbol>>;
+pub type SymbolFilterFn = Arc<dyn Fn(&Arc<Symbol>) -> bool + Send + Sync>;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq)]
 pub struct Symbol {
