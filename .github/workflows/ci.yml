@@ -1,0 +1,61 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Get code
+      - uses: actions/checkout@v4
+
+      # 2. Check Docker
+      - name: Verify Docker availability
+        run: docker version
+
+      # 3. Install Rust + rustfmt + clippy
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy,rustfmt
+
+      # 4. Install Cache cargo/target
+      - uses: Swatinem/rust-cache@v2
+
+      # 5. Check fmt
+      - name: rustfmt --check
+        run: cargo fmt --workspace -- --check
+
+      # 6. Clippy (warning == error)
+      - name: clippy
+        run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+
+      # 7. Release-build
+      - name: Build
+        run: cargo build --workspace --all-features --release --verbose
+
+      # 8. Tests
+      - name: Test
+        run: cargo test --workspace --all-features -- --quiet
+
+      # 9. Install Tarpaulin
+      - uses: taiki-e/install-action@cargo-tarpaulin
+
+      # 10. Coverage
+      - name: Coverage (tarpaulin)
+        run: |
+          cargo tarpaulin --workspace --all-features \
+                          --timeout 1200 \
+                          --fail-under 80 \
+                          --out Html --out Xml
+
+      # 11. Publish as artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tarpaulin-report
+          path: |
+            tarpaulin-report.html
+            cobertura.xml

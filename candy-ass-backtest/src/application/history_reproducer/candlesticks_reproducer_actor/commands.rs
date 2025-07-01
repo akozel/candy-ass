@@ -23,12 +23,12 @@ impl Handler<ProduceCandlesticks> for CandlesticksReproducerActor {
 
     fn handle(&mut self, msg: ProduceCandlesticks, ctx: &mut Self::Context) -> Self::Result {
         let timeframe = msg.timeframes.clone();
-        let start_date = msg.start_date.clone();
-        let end_date = msg.end_date.clone();
+        let start_date = msg.start_date;
+        let end_date = msg.end_date;
 
         match &self.status {
             Status::Ready => {
-                let (sender, receiver) = mpsc::channel::<(OffsetDateTime, Vec<Candlestick>)>(self.prefetch_buffer.clone());
+                let (sender, receiver) = mpsc::channel::<(OffsetDateTime, Vec<Candlestick>)>(self.prefetch_buffer);
                 let candlestick_repository = self.candlesticks_read_service.clone();
 
                 ctx.spawn(
@@ -46,7 +46,7 @@ impl Handler<ProduceCandlesticks> for CandlesticksReproducerActor {
                             match result {
                                 Ok(candlesticks) if candlesticks.is_empty() => break,
                                 Ok(candlesticks) => {
-                                    let _ = sender.send((start_date.clone(), candlesticks)).await;
+                                    let _ = sender.send((start_date, candlesticks)).await;
                                     info!(
                                         "[CandlesticksReproducerActor] candlesticks `{}` are produced in {:?}ms (sender capacity is {})",
                                         start_date.date(),

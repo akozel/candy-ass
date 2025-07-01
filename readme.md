@@ -62,14 +62,11 @@ but users are free to choose how flexible they want their setup to be.
 Entry points you can find in `candy-ass-backtest\bin` folder. Example `.env`: 
 
 ```
-#CANDY__CLICKHOUSE__HOST=http://192.168.100.2
 CANDY__CLICKHOUSE__HOST=http://127.0.0.1
 CANDY__CLICKHOUSE__PORT=8123
 CANDY__CLICKHOUSE__USERNAME=candy-ass
 CANDY__CLICKHOUSE__PASSWORD=123
 ```
-
----
 
 Regarding `multiple` runs:
 1. the application automatically checks for the existence of all 

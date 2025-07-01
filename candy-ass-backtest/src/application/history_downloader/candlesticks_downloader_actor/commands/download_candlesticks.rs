@@ -3,7 +3,7 @@ use crate::application::history_downloader::candlesticks_downloader_actor::{Cand
 use Status::Ready;
 use actix::{ActorFutureExt, AsyncContext, Handler, Message, MessageResult, WrapFuture};
 use candy_ass_core::domain::candlestick::Candlestick;
-use candy_ass_core::domain::symbol::{Symbol, Symbols};
+use candy_ass_core::domain::symbol::{Symbol, SymbolFilterFn, Symbols};
 use candy_ass_core::domain::timeframe::Timeframe;
 use candy_ass_core::integrations::http::binance::spot_http_client::KlinesApi;
 use futures::Stream;
@@ -21,7 +21,7 @@ pub struct DownloadCandlesticks {
     pub symbols: Arc<Symbols>,
     pub timeframe: Timeframe,
     pub start_date: OffsetDateTime,
-    pub filter: Arc<dyn Fn(&Arc<Symbol>) -> bool + Send + Sync>,
+    pub filter: SymbolFilterFn,
 }
 
 impl Handler<DownloadCandlesticks> for CandlesticksDownloaderActor {
@@ -32,7 +32,7 @@ impl Handler<DownloadCandlesticks> for CandlesticksDownloaderActor {
         let concurrency = self.concurrency;
         let rate_limit = self.binance_rate_limit;
         let max_delay = rate_limit * self.concurrency;
-        let buffer = self.downstream_buffer.clone();
+        let buffer = self.downstream_buffer;
 
         let timeframe = msg.timeframe.clone();
         let symbols = msg.symbols.clone();
@@ -41,7 +41,7 @@ impl Handler<DownloadCandlesticks> for CandlesticksDownloaderActor {
 
         match &self.status {
             Ready => {
-                let (candlestick_sender, candlestick_receiver) = mpsc::channel::<Vec<Candlestick>>(buffer.clone());
+                let (candlestick_sender, candlestick_receiver) = mpsc::channel::<Vec<Candlestick>>(buffer);
 
                 ctx.spawn(
                     async move {
@@ -120,7 +120,7 @@ fn stream_candlesticks_by_symbol(
                 Some(next_date) => {
                     let (candlesticks, report) = fetch_next_candlesticks(binance_client.clone(), symbol.clone(), timeframe, next_date).await;
                     let next_date = report.last_element_date;
-                    (report.produced_count != 0).then(|| ((candlesticks, report), next_date))
+                    (report.produced_count != 0).then_some(((candlesticks, report), next_date))
                 }
                 None => None,
             }

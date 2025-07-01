@@ -3,7 +3,7 @@ use crate::domain::symbol::Symbol;
 use dashmap::DashMap;
 use std::sync::{Arc, LazyLock};
 
-pub(super) static SYMBOL_POOL: LazyLock<SymbolPool> = LazyLock::new(|| SymbolPool::new());
+pub(super) static SYMBOL_POOL: LazyLock<SymbolPool> = LazyLock::new(SymbolPool::new);
 
 #[derive(Hash, Eq, PartialEq, Clone)]
 pub(super) struct SymbolKey {

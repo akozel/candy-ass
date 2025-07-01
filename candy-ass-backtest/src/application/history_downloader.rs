@@ -9,7 +9,7 @@ use candy_ass_core::application::actors::symbols_fetcher_actor;
 use candy_ass_core::application::actors::symbols_fetcher_actor::RefreshPolicy::OneShot;
 use candy_ass_core::application::actors::symbols_fetcher_actor::{GetReceiver, SymbolsFetcherActor};
 use candy_ass_core::domain::candlestick::Candlestick;
-use candy_ass_core::domain::symbol::{Symbol, Symbols};
+use candy_ass_core::domain::symbol::{SymbolFilterFn, Symbols};
 use candy_ass_core::domain::timeframe::Timeframe;
 use candy_ass_core::integrations::binance_spot_client;
 use candy_ass_core::integrations::http::HttpResponseError;
@@ -51,7 +51,7 @@ impl Application {
         }
     }
 
-    pub async fn start_pipeline(&self, timeframe: Timeframe, start_date: OffsetDateTime, filter: Arc<dyn Fn(&Arc<Symbol>) -> bool + Send + Sync>) {
+    pub async fn start_pipeline(&self, timeframe: Timeframe, start_date: OffsetDateTime, filter: SymbolFilterFn) {
         let candlesticks_repository = self.candlesticks_repository.clone();
         let symbols_fetcher_actor = self.symbols_fetcher_actor.clone();
         let candlesticks_downloader_actor = self.candlesticks_downloader_actor.clone();
@@ -61,7 +61,7 @@ impl Application {
             .then(|_| Self::watch_binance_symbols(symbols_fetcher_actor.clone()))
             .flatten()
             .take(1)
-            .map(|symbols| Self::into_download_candlesticks_command(timeframe.clone(), start_date, symbols, filter.clone()))
+            .map(|symbols| Self::download_candlesticks_command(timeframe.clone(), start_date, symbols, filter.clone()))
             .then(|command| Self::download_candlesticks_into_stream(command, candlesticks_downloader_actor.clone()))
             .flat_map_unordered(8, |candlesticks| candlesticks)
             .chunks(8)
@@ -77,7 +77,7 @@ impl Application {
             .await;
     }
 
-    pub async fn run_optimization(&self) -> () {
+    pub async fn run_optimization(&self) {
         let _ = self
             .candlesticks_repository
             .clone()
@@ -121,11 +121,11 @@ impl Application {
         candlesticks_repository.bulk_insert_candlesticks(chunk).await
     }
 
-    fn into_download_candlesticks_command(
+    fn download_candlesticks_command(
         timeframe: Timeframe,
         start_date: OffsetDateTime,
         symbols: Arc<Symbols>,
-        filter: Arc<dyn Fn(&Arc<Symbol>) -> bool + Send + Sync>,
+        filter: SymbolFilterFn,
     ) -> DownloadCandlesticks {
         DownloadCandlesticks {
             symbols,
