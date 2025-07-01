@@ -4,11 +4,11 @@ pub fn parse_f64(value: &serde_json::Value, field: &str) -> Result<f64, HttpResp
     match value {
         serde_json::Value::String(s) => s
             .parse::<f64>()
-            .map_err(|_| HttpResponseError::Unexpected(format!("Failed to parse f64 from string for {}", field))),
+            .map_err(|_| HttpResponseError::Unexpected(format!("Failed to parse f64 from string for {field}"))),
         serde_json::Value::Number(n) => n
             .as_f64()
-            .ok_or_else(|| HttpResponseError::Unexpected(format!("Invalid f64 number for {}", field))),
-        _ => Err(HttpResponseError::Unexpected(format!("Unexpected type for {}", field))),
+            .ok_or_else(|| HttpResponseError::Unexpected(format!("Invalid f64 number for {field}"))),
+        _ => Err(HttpResponseError::Unexpected(format!("Unexpected type for {field}"))),
     }
 }
 
@@ -16,11 +16,11 @@ pub fn parse_u64(value: &serde_json::Value, field: &str) -> Result<u64, HttpResp
     match value {
         serde_json::Value::Number(n) => n
             .as_u64()
-            .ok_or_else(|| HttpResponseError::Unexpected(format!("Invalid u64 number for {}", field))),
+            .ok_or_else(|| HttpResponseError::Unexpected(format!("Invalid u64 number for {field}"))),
         serde_json::Value::String(s) => s
             .parse::<u64>()
-            .map_err(|_| HttpResponseError::Unexpected(format!("Failed to parse u64 from string for {}", field))),
-        _ => Err(HttpResponseError::Unexpected(format!("Unexpected type for {}", field))),
+            .map_err(|_| HttpResponseError::Unexpected(format!("Failed to parse u64 from string for {field}"))),
+        _ => Err(HttpResponseError::Unexpected(format!("Unexpected type for {field}"))),
     }
 }
 
