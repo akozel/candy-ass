@@ -3,7 +3,7 @@ use crate::domain::exchange_type::ExchangeType;
 use crate::domain::exchange_type::ExchangeType::Binance;
 use crate::domain::symbol::Symbol;
 use crate::domain::timeframe::Timeframe::OneDay;
-use std::path::{PathBuf};
+use std::path::PathBuf;
 use std::sync::{Arc, LazyLock};
 use time::format_description::well_known::Rfc3339;
 use time::{Duration, OffsetDateTime};
