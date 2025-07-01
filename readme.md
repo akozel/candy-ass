@@ -59,7 +59,15 @@ in `.env` configuration. It is recommended to use keep `Clickhouse` instance on 
 The application offers minimal configuration options for ease of use, 
 but users are free to choose how flexible they want their setup to be.
 
-Entry points you can find in `candy-ass-backtest\bin` folder. 
+Entry points you can find in `candy-ass-backtest\bin` folder. Example `.env`: 
+
+```
+#CANDY__CLICKHOUSE__HOST=http://192.168.100.2
+CANDY__CLICKHOUSE__HOST=http://127.0.0.1
+CANDY__CLICKHOUSE__PORT=8123
+CANDY__CLICKHOUSE__USERNAME=candy-ass
+CANDY__CLICKHOUSE__PASSWORD=123
+```
 
 ---
 
