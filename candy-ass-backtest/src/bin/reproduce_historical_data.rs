@@ -25,6 +25,7 @@ async fn main() {
     let pipeline = application.start_pipeline(timeframes, start_date, end_date).await;
     let processed = pipeline
         .flat_map(|(_date_time, candlesticks)| futures::stream::iter(candlesticks))
+        //.then(_ {}) add your pipeline right here
         .count()
         .await;
 
