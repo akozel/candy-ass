@@ -5,54 +5,82 @@ on:
     branches: [main, master]
   pull_request:
 
+# env
+env:
+  HOME: /home/github-runner
+  CARGO_HOME: /home/github-runner/.cargo
+
 jobs:
-  test:
+  # 0. docker version
+  preflight:
     runs-on: self-hosted
-
     steps:
-      # 1. Get code
-      - uses: actions/checkout@v4
-
-      # 2. Check Docker
       - name: Verify Docker availability
         run: docker version
 
-      # 3. Install Rust + rustfmt + clippy
+  # 1. rustfmt
+  fmt:
+    runs-on: self-hosted
+    needs: preflight
+    steps:
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy,rustfmt
-
-      # 4. Install Cache cargo/target
+          components: rustfmt
       - uses: Swatinem/rust-cache@v2
-
-      # 5. Check fmt
       - name: rustfmt --check
         run: cargo fmt --all -- --check
 
-      # 6. Clippy (warning == error)
-      - name: clippy
+  # 2. clippy
+  clippy:
+    runs-on: self-hosted
+    needs: fmt
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: clippy (warnings → errors)
         run: cargo clippy --all --all-targets --all-features -- -D warnings
 
-      # 7. Release-build
-      - name: Build
+  # 3. Release-build
+  build:
+    runs-on: self-hosted
+    needs: clippy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable        # stable без доп. компонентов
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo build --release
         run: cargo build --all --all-features --release --verbose
 
-      # 8. Tests
-      - name: Test
+  # 4. Tests
+  test:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo test
         run: cargo test --all --all-features -- --quiet
 
-      # 9. Install Tarpaulin
+  # 5. Tarpaulin
+  coverage:
+    runs-on: self-hosted
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
       - uses: taiki-e/install-action@cargo-tarpaulin
-
-      # 10. Coverage
-      - name: Coverage (tarpaulin)
+      - name: cargo tarpaulin
         run: |
           cargo tarpaulin --all --all-features \
                           --timeout 1200 \
                           --fail-under 80 \
                           --out Html --out Xml
-
-      # 11. Publish as artifact
       - uses: actions/upload-artifact@v4
         with:
           name: tarpaulin-report
